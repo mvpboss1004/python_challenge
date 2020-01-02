@@ -1,4 +1,5 @@
 from PIL import Image,ImageDraw
+from bz2 import decompress
 back = Image.open('integrity.jpg')
 poly = Image.new('RGBA', back.size)
 pdraw = ImageDraw.Draw(poly)
@@ -7,6 +8,6 @@ vertices = [(coords[2*i],coords[2*i+1]) for i in range(len(coords)>>1)]
 pdraw.polygon(vertices, fill=(255,255,255,127), outline=(255,255,255,255))
 back.paste(poly,mask=poly)
 #back.show()
-un = 'BZh91AY&SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07<]\xc9\x14\xe1BA\x06\xbe\x084'
-pw = 'BZh91AY&SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13<]\xc9\x14\xe1BBP\x91\xf08'
-print(len(un), len(pw))
+un = b'BZh91AY&SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07<]\xc9\x14\xe1BA\x06\xbe\x084'
+pw = b'BZh91AY&SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13<]\xc9\x14\xe1BBP\x91\xf08'
+print(decompress(un).decode(), decompress(pw).decode())
