@@ -1,6 +1,6 @@
 from PIL import Image,ImageDraw
 import numpy as np
-back = np.array(Image.open('cave.jpg'))
+back = np.array(Image.open('evil1.jpg'))
 odd = back.copy()
 even = back.copy()
 for i in range(back.shape[0]):
