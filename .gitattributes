@@ -2,4 +2,5 @@
 *.png binary
 *.zip binary
 *.gfx binary
+*.gif binary
 banner.p binary
